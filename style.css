@@ -1,0 +1,256 @@
+/* ==================================*/
+/* start of basic stuff*/
+*,
+*::before
+*::after {
+    box-sizing: border-box;
+}
+html {
+    scroll-behavior: smooth;
+}
+body {
+    font-family: 'Inter', sans-serif;
+    /*get rid of horizontal scrolling*/
+    overflow-x:hidden;
+    background-color: var(--white);
+    padding: 0;
+    margin: 0;
+}
+/*just to make sure something funny doesn't happen to the pics */
+img {
+    display: block;
+    max-width: 100%;
+    max-height: 100%;
+}
+/*START OF ROOT*/
+:root {
+    --fw_reg: 500;
+    --fw_bold: 800;
+
+    --white: #F9F7F7;
+    --lightblue: #DBE2EF;
+    --blue: #3F72AF;
+    --darkblue: #112D4E;
+
+    --fs_h1: 2.5rem;
+    --fs_h2: 1.5rem;
+    --fs_h3: 1.2rem;
+    --fs_h4: 0.75rem;
+    --fs_p: 1rem;
+}
+
+@media screen and (max-width: 435px) {
+    :root {
+        --fs_h1: 1.6rem;
+        --fs_h2: 1rem;
+        --fs_h3: 0.75rem;
+        --fs_h4: 0.3rem;
+        --fs_p: 0.6rem;
+    }
+}
+/*END OF ROOT*/
+
+
+
+/* START OF FONT STUFF */
+h1,
+h2,
+h3 {
+    line-height: 1;
+}
+h1 {
+    font-size: var(--fs_h1);
+    font-weight: var(--fw_bold);
+}
+h2 {
+    font-size: var(--fs_h2);
+    font-weight: var(--fw_reg);
+}
+h3 {
+    font-size: var(--fs_h3);
+    font-weight: var(--fw_bold);
+    color: var(--blue);
+    margin: 2em 0;
+}
+h3:hover {
+  color: var(--darkblue)
+}
+p {
+    font-size: var(--fs_p);
+    font-weight: var(--fw_reg);
+}
+a {
+  text-decoration: none;
+  color: black;
+}
+a:hover {
+  color: var(--blue);
+}
+/* END OF FONT STUFF*/
+
+/* end of basic stuff*/
+/*===================================================================================*/
+
+
+
+.container {
+  padding: 2em;
+  display: grid;
+  grid-template-columns: 1fr 0.4fr;
+  grid-gap: 1em;
+  grid-template-areas:
+  "main main"
+  "ex_activities side"
+  "volunteer side ";
+}
+@media screen and (max-width: 800px) {
+  .container {
+    padding: 1em;
+    grid-template-columns: repeat(1, 100%);
+    grid-template-areas:
+    "main"
+    "ex_activities"
+    "volunteer"
+    "side";
+  }
+}
+
+
+.main_information {
+  grid-area: main;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.main_information h1 {
+  margin: 0.1em 0;
+}
+.main_information p {
+  margin: 0.3em 0;
+  color: var(--blue)
+}
+.main_information p:hover {
+  color: var(--darkblue)
+}
+.main_information .contact_info {
+  margin: 1em 0;
+}
+.photo {
+  padding: 1em;
+  height: 15em;
+  width: 15em;
+}
+.photo img {
+  margin: 0 auto;
+}
+td {
+  color: black;
+  font-size: var(--fs_p)
+}
+@media screen and (max-width: 800px) {
+  .main_information {
+    flex-direction: column;
+    text-align: center;
+  }
+  table {
+    margin: 0 auto;
+  }
+}
+@media screen and (max-width: 400px) {
+    .photo {
+      height: 10em;
+      width: 10em;
+    }
+}
+
+
+
+
+.ex_activities {
+  grid-area: ex_activities;
+  padding: 1em;
+}
+.ex_activities div{
+  padding: 0.5em 0;
+}
+.ex_activities h2 {
+  margin: 0;
+}
+.ex_activities div .date {
+  margin: 0;
+  padding: 0.2em;
+}
+.ex_activities div .desc{
+  padding: 1em 0;
+  margin: 0;
+}
+.side {
+  grid-area: side;
+  padding: 1em;
+}
+.internships {
+  grid-area: volunteer;
+  padding: 1em;
+}
+.internships div{
+  padding: 0.5em 0;
+}
+.internships h2 {
+  margin: 0;
+}
+.internships div .date {
+  margin: 0;
+  padding: 0.2em;
+}
+.internships div .desc{
+  padding: 1em 0;
+  margin: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+a[data-tool-tip] {
+  position: relative;
+}
+a[data-tool-tip]::after {
+  content: attr(data-tool-tip);
+  display: block;
+  position: absolute;
+  background-color: var(--lightblue);
+  padding: 0.5em 0.7em;
+  color: var(--darkblue);
+  border-radius: 6px;
+  font-size: var(--fs_h4);
+  font-weight: var(--fw_reg);
+  left:0;
+  bottom: 0;
+  white-space: nowrap;
+  transform: scale(0);
+  transition: transform ease-in-out 150ms;
+}
+
+a[data-tool-tip]:hover::after {
+  transform: scale(1);
+  bottom: 100%
+}
